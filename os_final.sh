@@ -10,7 +10,7 @@ DAYS_TO_KEEP=7
 
 show_menu() {
     echo "=============================="
-    echo "        🧰 Backup Menu        "
+    echo "         Backup Menu        "
     echo "=============================="
     echo "1. Set Source Directory"
     echo "2. Set File Extension"
@@ -65,7 +65,7 @@ dry_run() {
         echo "❗ Please set source and file extension first!"
         return
     fi
-    echo "🔍 Files to be backed up:"
+    echo " Files to be backed up:"
     find "$SOURCE_DIR" -type f -name "*$FILE_EXT"
 }
 
@@ -80,3 +80,4 @@ view_log() {
     echo "📜 Backup Log:"
     cat "$LOG_FILE"
 }
+

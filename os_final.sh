@@ -81,3 +81,39 @@ view_log() {
     cat "$LOG_FILE"
 }
 
+
+while true; do
+    show_menu
+    read -p "Select an option: " CHOICE
+    case $CHOICE in
+        1)
+            read -p "Enter source directory: " SOURCE_DIR
+            ;;
+        2)
+            read -p "Enter file extension (e.g. .txt): " FILE_EXT
+            ;;
+        3)
+            read -p "Enter backup destination directory: " BACKUP_DIR
+            ;;
+        4)
+            run_backup
+            ;;
+        5)
+            dry_run
+            ;;
+        6)
+            view_log
+            ;;
+        7)
+            clean_old_backups
+            ;;
+        0)
+            echo "👋 Goodbye!"
+            break
+            ;;
+        *)
+            echo "❗ Invalid option"
+            ;;
+    esac
+    echo ""
+done

@@ -48,7 +48,6 @@ run_backup() {
     END_TIME=$(date +%s)
     DURATION=$((END_TIME - START_TIME))
     SIZE=$(du -h "$BACKUP_PATH" | cut -f1)
-
     STATUS=$?
     if [[ $STATUS -eq 0 ]]; then
         echo "✅ Backup succeeded at $TIMESTAMP - Size: $SIZE - Duration: ${DURATION}s" >> "$LOG_FILE"

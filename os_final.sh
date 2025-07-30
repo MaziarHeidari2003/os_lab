@@ -74,3 +74,9 @@ clean_old_backups() {
     find "$BACKUP_DIR" -type f -name "backup_*" -mtime +$DAYS_TO_KEEP -exec rm -f {} \;
     echo "✅ Cleanup completed."
 }
+
+
+view_log() {
+    echo "📜 Backup Log:"
+    cat "$LOG_FILE"
+}

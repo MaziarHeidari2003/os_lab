@@ -68,3 +68,9 @@ dry_run() {
     echo "🔍 Files to be backed up:"
     find "$SOURCE_DIR" -type f -name "*$FILE_EXT"
 }
+
+clean_old_backups() {
+    echo "🧹 Removing backups older than $DAYS_TO_KEEP days..."
+    find "$BACKUP_DIR" -type f -name "backup_*" -mtime +$DAYS_TO_KEEP -exec rm -f {} \;
+    echo "✅ Cleanup completed."
+}

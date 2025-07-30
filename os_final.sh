@@ -8,7 +8,20 @@ CONFIG_FILE="backup.conf"
 LOG_FILE="backup.log"
 DAYS_TO_KEEP=7
 
-
+show_menu() {
+    echo "=============================="
+    echo "        🧰 Backup Menu        "
+    echo "=============================="
+    echo "1. Set Source Directory"
+    echo "2. Set File Extension"
+    echo "3. Set Backup Destination"
+    echo "4. Run Backup"
+    echo "5. Dry-run"
+    echo "6. View Log"
+    echo "7. Clean old backups"
+    echo "0. Exit"
+    echo "=============================="
+}
 
 
 run_backup() {
@@ -43,4 +56,15 @@ run_backup() {
         echo "❌ Backup failed at $TIMESTAMP - Duration: ${DURATION}s" >> "$LOG_FILE"
         echo "❌ Backup failed."
     fi
+}
+
+
+dry_run() {
+    echo "🧪 Dry-run mode enabled."
+    if [[ -z "$SOURCE_DIR" || -z "$FILE_EXT" ]]; then
+        echo "❗ Please set source and file extension first!"
+        return
+    fi
+    echo "🔍 Files to be backed up:"
+    find "$SOURCE_DIR" -type f -name "*$FILE_EXT"
 }
